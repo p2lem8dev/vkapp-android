@@ -2,11 +2,12 @@ package com.p2lem8dev.vkapp.application
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.p2lem8dev.vkapp.application.session.SessionProvider
 import com.p2lem8dev.vkapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel by viewModels { MainViewModel() }
+    private val viewModel by viewModels { MainViewModel(SessionProvider.provide(this)) }
 
     private lateinit var binding: ActivityMainBinding
 
