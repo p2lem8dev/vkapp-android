@@ -14,9 +14,9 @@ class AppViewModelFactory(private val factory: () -> ViewModel) : ViewModelProvi
 
 inline fun <reified VM : ViewModel> ViewModelStoreOwner.viewModels(
     storeFactory: ViewModelStoreOwner? = null,
-    noinline constructor: () -> VM
+    noinline constructor: () -> VM,
 ): Lazy<VM> = ViewModelLazy(
     viewModelClass = VM::class,
     storeProducer = { (storeFactory ?: this).viewModelStore },
-    factoryProducer = { AppViewModelFactory(constructor) }
+    factoryProducer = { AppViewModelFactory(constructor) },
 )
